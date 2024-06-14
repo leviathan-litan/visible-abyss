@@ -54,7 +54,7 @@ ROOT_URLCONF = "visible_abyss_backend_django_drf.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -74,10 +74,22 @@ WSGI_APPLICATION = "visible_abyss_backend_django_drf.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+
+    # Database: SQLite
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
-    }
+    },
+
+    # Database: MySQL
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "HOST": "你的数据库地址",
+    #     "USER": "你的用户名",
+    #     "PASSWORD": "你的密码",
+    #     "NAME": "你的数据库名",
+    # },
+
 }
 
 
@@ -116,8 +128,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [
+    "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# ==============================
+# 导入「local_settings.py」
+# ==============================
+try:
+    from .local_settings import *
+except ImportError:
+    pass
