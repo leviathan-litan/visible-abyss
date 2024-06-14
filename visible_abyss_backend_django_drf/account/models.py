@@ -14,7 +14,7 @@ class Profile(models.Model):
         (1, '个人'),
     ]
 
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         verbose_name="账户",
         to=User,
         on_delete=models.CASCADE,

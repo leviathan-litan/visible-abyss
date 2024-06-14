@@ -9,5 +9,6 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = [
         'user',
         'active',
+        'account_type',
         'comments',
     ]
