@@ -29,7 +29,7 @@ class Profile(models.Model):
     account_type = models.IntegerField(
         verbose_name="账户类型",
         choices=ACCOUNT_TYPE_CHOICE,
-        default=0,
+        default=1,
     )
 
     comments = models.TextField(
@@ -39,6 +39,35 @@ class Profile(models.Model):
         blank=True,
     )
 
+    wechat = models.CharField(
+        verbose_name="微信号",
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+    alipay = models.CharField(
+        verbose_name="支付宝",
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+
+    mobile = models.CharField(
+        verbose_name="电话",
+        max_length=30,
+        null=True,
+        blank=True,
+    )
+    email = models.CharField(
+        verbose_name="电子邮箱",
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+
     class Meta:
         verbose_name="账户信息"
         verbose_name_plural=verbose_name
+
+    def __str__(self):
+        return self.user.username

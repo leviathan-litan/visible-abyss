@@ -7,8 +7,11 @@ from account.models import *
 class Charge(models.Model):
 
     created_at = models.DateField(
-        verbose_name="创建时间",
-        auto_now_add=True,
+        verbose_name="发生时间",
+        # auto_now_add=True,
+        # auto_now=True,
+        auto_created=True,
+        editable=True,
     )
     matter = models.CharField(
         verbose_name="事件名",
@@ -17,13 +20,13 @@ class Charge(models.Model):
 
     expend_side = models.ForeignKey(
         verbose_name="支出方",
-        to=Profile,
+        to=User,
         on_delete=models.DO_NOTHING,
         related_name='expend_side',
     )
     income_side = models.ForeignKey(
         verbose_name="收入方",
-        to=Profile,
+        to=User,
         on_delete=models.DO_NOTHING,
         related_name='income_side',
     )
@@ -37,8 +40,13 @@ class Charge(models.Model):
     comments = models.TextField(
         verbose_name="备注",
         max_length=200,
+        null=True,
+        blank=True,
     )
 
     class Meta:
         verbose_name = "记账"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return "【" + str(self.created_at) + "】" + self.matter
