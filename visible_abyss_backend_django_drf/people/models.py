@@ -17,6 +17,8 @@ class People(models.Model):
         verbose_name="工作",
         to=Work,
         on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
 
     # 技能
@@ -24,11 +26,15 @@ class People(models.Model):
         verbose_name="技能",
         to=Skill,
         on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
     
     people_comments = models.TextField(
         verbose_name="备注",
         max_length=200,
+        null=True,
+        blank=True,
     )
 
     created_at = models.DateTimeField(
@@ -42,6 +48,9 @@ class People(models.Model):
         editable=True,
     )
 
-    class meta:
+    class Meta:
         verbose_name = "人"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.peple_name

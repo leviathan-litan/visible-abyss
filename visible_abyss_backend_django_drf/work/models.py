@@ -14,6 +14,9 @@ class Work(models.Model):
         verbose_name = "工作"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.work_name
+
 class Skill(models.Model):
 
     skill_name = models.CharField(
@@ -25,3 +28,6 @@ class Skill(models.Model):
     class Meta:
         verbose_name = "技能"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.skill_name
