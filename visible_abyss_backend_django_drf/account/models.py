@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from tag.models import *
+
 # Create your models here.
 
 class Profile(models.Model):
@@ -32,13 +34,6 @@ class Profile(models.Model):
         default=1,
     )
 
-    comments = models.TextField(
-        verbose_name="备注",
-        max_length=200,
-        null=True,
-        blank=True,
-    )
-
     wechat = models.CharField(
         verbose_name="微信号",
         max_length=200,
@@ -65,9 +60,53 @@ class Profile(models.Model):
         blank=True,
     )
 
+    # 标签
+    tags = models.ManyToManyField(
+        verbose_name="标签",
+        to=Tags,
+        help_text="打上合适的标签，便于后期按标签查找账单记录",
+        blank=True,
+    )
+
+    comments = models.TextField(
+        verbose_name="备注",
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+
     class Meta:
         verbose_name="账户信息"
         verbose_name_plural=verbose_name
 
     def __str__(self):
         return self.user.username
+
+class Business(models.Model):
+
+    business_name = models.CharField(
+        verbose_name="商家名称",
+        max_length=20,
+    )
+
+    # 标签
+    tags = models.ManyToManyField(
+        verbose_name="标签",
+        to=Tags,
+        help_text="打上合适的标签，便于后期按标签查找账单记录",
+        blank=True,
+    )
+
+    business_comments = models.TextField(
+        verbose_name="备注",
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        verbose_name = "商家"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.business_name
