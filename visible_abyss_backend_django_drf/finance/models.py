@@ -10,10 +10,6 @@ class Charge(models.Model):
 
     created_at = models.DateField(
         verbose_name="发生时间",
-        # auto_now_add=True,
-        # auto_now=True,
-        auto_created=True,
-        editable=True,
     )
     matter = models.CharField(
         verbose_name="事件名",
