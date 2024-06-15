@@ -7,6 +7,7 @@ class Tags(models.Model):
     tag_name = models.CharField(
         verbose_name="标签名",
         max_length=200,
+        unique=True,
     )
 
     tag_comments = models.TextField(

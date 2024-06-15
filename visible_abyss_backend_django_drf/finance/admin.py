@@ -9,6 +9,7 @@ class ChargeAdmin(admin.ModelAdmin):
     list_display = [
         'created_at',
         'matter',
+        'business',
         'expend_side',
         'income_side',
         'money_amount',
@@ -17,6 +18,20 @@ class ChargeAdmin(admin.ModelAdmin):
         'show_tags',
         
         'charge_comments',
+    ]
+
+    date_hierarchy = "created_at"
+    list_editable = [
+        'business',
+    ]
+    list_display_links = [
+        'matter',
+    ]
+    list_filter = [
+        'expend_side',
+        'income_side',
+        'business',
+        'created_at',
     ]
 
     # 在「展示界面」中「多对多」关系的呈现方式
