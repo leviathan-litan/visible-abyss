@@ -12,7 +12,7 @@ class People(models.Model):
         max_length=200,
     )
 
-    # 工作
+    # 工作：后期要通过从「工作经验」中查到的信息去跨表查询
     work = models.ForeignKey(
         verbose_name="工作",
         to=Work,
@@ -21,7 +21,7 @@ class People(models.Model):
         blank=True,
     )
 
-    # 技能
+    # 技能：后期要通过对「工作经验」中查到的信息去跨表查询
     skill = models.ForeignKey(
         verbose_name="技能",
         to=Skill,
@@ -34,6 +34,12 @@ class People(models.Model):
         verbose_name="备注",
         max_length=200,
         null=True,
+        blank=True,
+    )
+
+    tags = models.ManyToManyField(
+        verbose_name="标签",
+        to=Tags,
         blank=True,
     )
 
