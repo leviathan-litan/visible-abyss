@@ -18,7 +18,9 @@ class Company(models.Model):
     company_description = models.TextField(
         verbose_name="描述",
         max_length=200,
-        help_text="公司或组织的描述或说明"
+        help_text="公司或组织的描述或说明",
+        null=True,
+        blank=True,
     )
 
     class Meta:
