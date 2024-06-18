@@ -1,6 +1,11 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
+    <br/>
+    <div class="inline-block m-2 rounded cursor-pointer shadow transition-all duration-150 ease-in-out transform hover:scale-105 ">
+      <span class="bg-blue-500 text-white px-2 py-1 rounded-l">Search</span>
+      <span class="bg-blue-700 text-white px-2 py-1 rounded-r font-bold">搜索</span>
+    </div>
   </div>
 </template>
 
