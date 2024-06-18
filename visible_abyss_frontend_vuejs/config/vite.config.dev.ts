@@ -1,12 +1,12 @@
 // ================== 导入
 
 // ----- 组件
-import {mergeConfig, loadEnv} from "vite";
+import {mergeConfig, defineConfig, loadEnv} from "vite";
 
 // ----- 文件
 import baseConfig from "./vite.config.base"
 
-// ================== 配置
+// ================== 配置：融合（mergeConfig）
 export default mergeConfig({
         // 需要在项目的根目录下包含相应的文件「.env.dev」
         mode: "dev",
@@ -18,6 +18,8 @@ export default mergeConfig({
             host: '0.0.0.0',
             // 服务器端口
             // port: Number(env.VITE_APP_PORT),
+            // port: Number(process.env.VITE_APP_PORT),
+            port: 3000,
             fs: {
                 strict: true,
             },

@@ -7,7 +7,7 @@ import svgLoader from "vite-svg-loader";
 
 // ----- 组件（拆包）
 import {resolve} from "path";
-import {defineConfig} from "vite";
+import {defineConfig, loadEnv} from "vite";
 import {fileURLToPath, URL} from "node:url";
 
 // ----- 文件
@@ -64,5 +64,8 @@ export default defineConfig({
                 javascriptEnabled: true,
             }
         }
+    },
+    server:{
+        port: Number(process.env.VITE_APP_PORT),
     }
 })
