@@ -7,7 +7,8 @@ import {mergeConfig, defineConfig, loadEnv} from "vite";
 import baseConfig from "./vite.config.base"
 
 // ================== 配置：融合（mergeConfig）
-export default mergeConfig({
+export default mergeConfig(
+    {
         // 需要在项目的根目录下包含相应的文件「.env.dev」
         mode: "dev",
         server: {
