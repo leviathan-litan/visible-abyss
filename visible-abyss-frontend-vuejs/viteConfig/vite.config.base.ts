@@ -4,7 +4,9 @@ import {resolve} from 'path'
 
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+
 import svgLoader from 'vite-svg-loader'
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
 import {vitePluginForArco} from "@arco-plugins/vite-vue"
 
@@ -17,13 +19,23 @@ import { ArcoResolver } from "unplugin-vue-components/resolvers";
 export default defineConfig({
     base: "./",
     plugins: [
+        // ----------- Default
         vue(),
         vueJsx(),
 
+        // ----------- SVG
         svgLoader({
             svgoConfig: {}
         }),
 
+        createSvgIconsPlugin({
+            iconDirs: [
+                resolve(__dirname, "../src/assets/icons")
+            ],
+            symbolId: "icon-[dir]-[name]",
+        }),
+
+        // ----------- Arco.design
         vitePluginForArco({
             style: 'css'
         }),
