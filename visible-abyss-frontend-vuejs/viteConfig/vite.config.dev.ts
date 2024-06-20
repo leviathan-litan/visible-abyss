@@ -1,3 +1,5 @@
+// noinspection TypeScriptValidateTypes
+
 import { mergeConfig, defineConfig, loadEnv } from "vite";
 import baseConfig from "./vite.config.base"
 
