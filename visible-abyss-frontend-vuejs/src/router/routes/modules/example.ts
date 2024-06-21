@@ -17,6 +17,11 @@ const EXAMPLE: AppRouteRecordRaw = {
             name: 'pinia',
             component: () => import('@/views/example/pinia/index.vue')
         },
+        {
+            path: 'lang',
+            name: 'lang',
+            component: () => import('@/views/example/lang/index.vue')
+        },
     ]
 }
 
