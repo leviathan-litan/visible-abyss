@@ -1,37 +1,23 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import NProgress from 'nprogress'; // progress bar
-import 'nprogress/nprogress.css';
-
-import { appRoutes } from './routes';
-import { REDIRECT_MAIN, NOT_FOUND_ROUTE } from './routes/base';
-import createRouteGuard from './guard';
-
-NProgress.configure({ showSpinner: false }); // NProgress Configuration
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '@/views/example/HomeView.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: 'login',
+      name: 'home',
+      component: HomeView
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('@/views/login/index.vue'),
-      meta: {
-        requiresAuth: false,
-      },
-    },
-    ...appRoutes,
-    REDIRECT_MAIN,
-    NOT_FOUND_ROUTE,
-  ],
-  scrollBehavior() {
-    return { top: 0 };
-  },
-});
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('@/views/example/AboutView.vue')
+    }
+  ]
+})
 
-createRouteGuard(router);
-
-export default router;
+export default router
