@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    
+
     <h1>This is an about page</h1>
 
     <div class="inline-block m-2 rounded cursor-pointer shadow transition-all duration-150 ease-in-out transform hover:scale-105 ">
